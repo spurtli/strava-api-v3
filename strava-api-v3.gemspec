@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Jared Holdcroft"]
   spec.email         = ["jared@theholdcrofts.com"]
   spec.description   = %q{The library provides a wrapper to Version 3 of the Strava API}
-  spec.summary       = %q{The library provides a wrapper to Version 3 of the Strava API}
-  spec.homepage      = ""
+  spec.summary       = %q{Strava API V3}
+  spec.homepage      = "http://github.com/jaredholdcroft/strava-api-v3"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
