@@ -10,7 +10,11 @@ _coming soon_
 
 ## Create a client
 
-    @client = Strava::Api::V3::Client.new(:access_token => "MY_ACCESS_TOKEN", :client_id => "1", :client_secret => "shhhhhhhhhhhh")
+```ruby
+
+@client = Strava::Api::V3::Client.new(:access_token => "MY_ACCESS_TOKEN", :client_id => "1", :client_secret => "shhhhhhhhhhhh")
+
+```
 
 ## Call some methods
 
