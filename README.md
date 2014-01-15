@@ -4,9 +4,9 @@
 
 This gem provides a wrapper around the Strava API V3 - [http://strava.github.io/api/](http://strava.github.io/api/)
 
-## Configure your app
+## Install
 
-_coming soon_
+gem install 'strava-api-v3'
 
 ## Create a client
 
