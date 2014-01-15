@@ -5,19 +5,9 @@ module Strava::Api::V3
  
     describe '.access_token' do
       it 'should return access token' do
+        puts Strava::Api::V3.access_token
+        puts Strava::Api::V3::Configuration::DEFAULT_ACCESS_TOKEN
         Strava::Api::V3.access_token.must_equal Strava::Api::V3::Configuration::DEFAULT_ACCESS_TOKEN
-      end
-    end
-   
-    describe '.client_id' do
-      it 'should return client id' do
-        Strava::Api::V3.client_id.must_equal Strava::Api::V3::Configuration::DEFAULT_CLIENT_ID
-      end
-    end
-   
-    describe '.client_token' do
-      it 'should return client secret' do
-        Strava::Api::V3.client_secret.must_equal Strava::Api::V3::Configuration::DEFAULT_CLIENT_SECRET
       end
     end
   

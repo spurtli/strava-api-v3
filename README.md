@@ -10,9 +10,11 @@ _coming soon_
 
 ## Create a client
 
+At this point you will need to have the user authorise your application using OAuth2.  
+
 ```ruby
 
-@client = Strava::Api::V3::Client.new(:access_token => "MY_ACCESS_TOKEN", :client_id => "1", :client_secret => "shhhhhhhhhhhh")
+@client = Strava::Api::V3::Client.new(:access_token => "MY_ACCESS_TOKEN")
 
 ```
 

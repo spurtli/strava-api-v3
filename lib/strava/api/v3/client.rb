@@ -1,6 +1,10 @@
+require 'strava/api/v3/athlete'
+
 module Strava::Api::V3
  
   class Client
+
+    include Athlete
  
     # Define the same set of accessors as the Awesome module
     attr_accessor *Configuration::VALID_CONFIG_KEYS
@@ -15,6 +19,8 @@ module Strava::Api::V3
       Configuration::VALID_CONFIG_KEYS.each do |key|
         send("#{key}=", merged_options[key])
       end
+
+      puts self.access_token
     end
  
   end # Client
