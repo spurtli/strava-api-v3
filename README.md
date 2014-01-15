@@ -15,7 +15,6 @@ At this point you will need to have the user authorise your application using OA
 ```ruby
 
 @client = Strava::Api::V3::Client.new(:access_token => "MY_ACCESS_TOKEN")
-
 ```
 
 ## Call some methods
@@ -23,7 +22,6 @@ At this point you will need to have the user authorise your application using OA
 ```ruby
 
 @client.get_current_athlete
-
 ```
 
 
