@@ -20,7 +20,12 @@ At this point you will need to have the user authorise your application using OA
 
 ## Call some methods
 
-_coming soon_
+```ruby
+
+@client.get_current_athlete
+
+```
+
 
 ## Contributors
 
