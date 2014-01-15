@@ -39,20 +39,27 @@
 <p>This gem provides a wrapper around the Strava API V3 - <a href="http://strava.github.io/api/">http://strava.github.io/api/</a></p>
 
 <h2>
-<a name="configure-your-app" class="anchor" href="#configure-your-app"><span class="octicon octicon-link"></span></a>Configure your app</h2>
+<a name="install" class="anchor" href="#install"><span class="octicon octicon-link"></span></a>Install</h2>
 
-<p><em>coming soon</em></p>
+<p>gem install 'strava-api-v3'</p>
 
 <h2>
 <a name="create-a-client" class="anchor" href="#create-a-client"><span class="octicon octicon-link"></span></a>Create a client</h2>
 
-<pre><code>@client = Strava::Api::V3::Client.new(:access_token =&gt; "MY_ACCESS_TOKEN", :client_id =&gt; "1", :client_secret =&gt; "shhhhhhhhhhhh")
-</code></pre>
+<p>At this point you will need to have the user authorise your application using OAuth2.  </p>
+
+<div class="highlight highlight-ruby"><pre>
+<span class="vi">@client</span> <span class="o">=</span> <span class="no">Strava</span><span class="o">::</span><span class="no">Api</span><span class="o">::</span><span class="no">V3</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">:access_token</span> <span class="o">=&gt;</span> <span class="s2">"MY_ACCESS_TOKEN"</span><span class="p">)</span>
+
+</pre></div>
 
 <h2>
-<a name="call-some-methods" class="anchor" href="#call-some-methods"><span class="octicon octicon-link"></span></a>Call some methods</h2>
+<a name="call-a-method" class="anchor" href="#call-a-method"><span class="octicon octicon-link"></span></a>Call a method</h2>
 
-<p><em>coming soon</em></p>
+<div class="highlight highlight-ruby"><pre>
+<span class="vi">@client</span><span class="o">.</span><span class="n">get_current_athlete</span>
+
+</pre></div>
 
 <h2>
 <a name="contributors" class="anchor" href="#contributors"><span class="octicon octicon-link"></span></a>Contributors</h2>
