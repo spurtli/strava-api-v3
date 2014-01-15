@@ -20,8 +20,8 @@ module Strava::Api::V3
     # @return the result from Strava
     def api_call(path, args = {}, verb = "get", options = {}, &post_processing)
       result = api(path, args, verb, options) do |response|
-        #error = check_response(response.code, response.body)
-        #raise error if error
+        error = check_response(response.code, response.body)
+        raise error if error
       end
 
 
@@ -95,5 +95,40 @@ module Strava::Api::V3
         result.merge(key => value)
       end
     end
+
+      def check_response(http_status, response_body)
+        # Check for Graph API-specific errors. This returns an error of the appropriate type
+        # which is immediately raised (non-batch) or added to the list of batch results (batch)
+        http_status = http_status.to_i
+
+        if http_status >= 400
+          begin
+            response_hash = MultiJson.load(response_body)
+          rescue MultiJson::DecodeError
+            response_hash = {}
+          end
+
+          if response_hash['error_code']
+            # Old batch api error format. This can be removed on July 5, 2012.
+            # See https://developers.facebook.com/roadmap/#graph-batch-api-exception-format
+            error_info = {
+              'code' => response_hash['error_code'],
+              'message' => response_hash['error_description']
+            }
+          else
+            error_info = response_hash['error'] || {}
+          end
+
+          if error_info['type'] == 'OAuthException' &&
+             ( !error_info['code'] || [102, 190, 450, 452, 2500].include?(error_info['code'].to_i))
+
+            # See: https://developers.facebook.com/docs/authentication/access-token-expiration/
+            #      https://developers.facebook.com/bugs/319643234746794?browse=search_4fa075c0bd9117b20604672
+            AuthenticationError.new(http_status, response_body, error_info)
+          else
+            ClientError.new(http_status, response_body, error_info)
+          end
+        end
+      end    
 end
 end
