@@ -17,11 +17,11 @@ At this point you will need to have the user authorise your application using OA
 @client = Strava::Api::V3::Client.new(:access_token => "MY_ACCESS_TOKEN")
 ```
 
-## Call some methods
-
-Each method returns a JSON object - see [http://strava.github.io/api/v3/athlete/](http://strava.github.io/api/v3/athlete/) for more info
+## Call API methods
 
 ### Athlete
+
+Each method returns a JSON object - see [http://strava.github.io/api/v3/athlete/](http://strava.github.io/api/v3/athlete/) for more info
 
 ```ruby
 
