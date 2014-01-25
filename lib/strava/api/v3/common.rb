@@ -1,5 +1,6 @@
 require 'httparty'
 require 'multi_json'
+require 'strava/api/v3/errors'
 
 module Strava::Api::V3
   module Common
@@ -24,7 +25,6 @@ module Strava::Api::V3
         raise error if error
       end
 
-
       # now process as appropriate for the given call (get picture header, etc.)
       post_processing ? post_processing.call(result) : result
     end
@@ -45,7 +45,7 @@ module Strava::Api::V3
     #
     # @raise [Strava::Api::V3::ServerError] if Strava returns an error (response status >= 500)
     #
-    # @return the body of the response from Strava (TODO)
+    # @return the body of the response from Strava 
     def api(path, args = {}, verb = "get", options = {}, &error_checking_block)
       # If a access token is explicitly provided, use that
       # This is explicitly needed in batch requests so GraphCollection
