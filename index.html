@@ -34,7 +34,7 @@
         <h1>
 <a name="strava-api-v3" class="anchor" href="#strava-api-v3"><span class="octicon octicon-link"></span></a>strava-api-v3</h1>
 
-<p><a href="http://travis-ci.org/jaredholdcroft/strava-api-v3"><img src="https://secure.travis-ci.org/jaredholdcroft/strava-api-v3.png" alt="Build Status"></a></p>
+<p><a href="http://travis-ci.org/jaredholdcroft/strava-api-v3"><img src="https://secure.travis-ci.org/jaredholdcroft/strava-api-v3.png" alt="Build Status"></a> <a href="https://codeclimate.com/github/jaredholdcroft/strava-api-v3"><img src="https://codeclimate.com/github/jaredholdcroft/strava-api-v3.png" alt="Code Climate"></a></p>
 
 <p>This gem provides a wrapper around the Strava API V3 - <a href="http://strava.github.io/api/">http://strava.github.io/api/</a></p>
 
@@ -53,10 +53,20 @@
 </pre></div>
 
 <h2>
-<a name="call-some-methods" class="anchor" href="#call-some-methods"><span class="octicon octicon-link"></span></a>Call some methods</h2>
+<a name="call-api-methods" class="anchor" href="#call-api-methods"><span class="octicon octicon-link"></span></a>Call API methods</h2>
+
+<h3>
+<a name="athlete" class="anchor" href="#athlete"><span class="octicon octicon-link"></span></a>Athlete</h3>
+
+<p>Each method returns a JSON object - see <a href="http://strava.github.io/api/v3/athlete/">http://strava.github.io/api/v3/athlete/</a> for more info</p>
 
 <div class="highlight highlight-ruby"><pre>
-<span class="vi">@client</span><span class="o">.</span><span class="n">get_current_athlete</span>
+<span class="vi">@client</span><span class="o">.</span><span class="n">retrieve_current_athlete</span> <span class="c1"># fetch the authenticated athlete</span>
+
+<span class="vi">@client</span><span class="o">.</span><span class="n">retrieve_another_athlete</span><span class="p">(</span><span class="ss">:some_id</span><span class="p">)</span> <span class="c1"># fetch another athlete by id</span>
+
+<span class="vi">@client</span><span class="o">.</span><span class="n">list_athlete_segment_efforts</span><span class="p">(</span><span class="ss">:some_id</span><span class="p">)</span> <span class="c1"># fetch K/QOMs/CRs for another athlete by id</span>
+
 </pre></div>
 
 <h2>
