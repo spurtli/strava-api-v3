@@ -10,7 +10,7 @@ gem install 'strava-api-v3'
 
 ## Create a client
 
-At this point you will need to have the user authorise your application using OAuth2.  
+At this point you will need to have the user authorise your application using OAuth2.
 
 ```ruby
 
@@ -18,6 +18,24 @@ At this point you will need to have the user authorise your application using OA
 ```
 
 ## Call API methods
+
+### Activity
+
+Each method returns a JSON object - see [http://strava.github.io/api/v3/activities/](http://strava.github.io/api/v3/activities/) for more info
+
+```ruby
+
+@client.retrieve_an_activity(:some_id)
+
+@client.list_athlete_activities
+
+@client.list_friends_activities
+
+@client.list_activity_zones(:some_id)
+
+@client.list_activity_laps(:some_id)
+
+```
 
 ### Athlete
 
@@ -33,7 +51,73 @@ Each method returns a JSON object - see [http://strava.github.io/api/v3/athlete/
 
 ```
 
+### Club
+
+Each method returns a JSON object - see [http://strava.github.io/api/v3/clubs/](http://strava.github.io/api/v3/clubs/) for more info
+
+```ruby
+
+@client.retrieve_a_club(:some_id)
+
+@client.list_athlete_clubs
+
+@client.list_club_members(:some_id)
+
+@client.list_club_activities(:some_id)
+
+```
+
+### Gear
+
+Each method returns a JSON object - see [http://strava.github.io/api/v3/gear/](http://strava.github.io/api/v3/gear/) for more info
+
+```ruby
+
+@client.retrieve_gear(:some_id)
+
+```
+
+### Segment
+
+Each method returns a JSON object - see [http://strava.github.io/api/v3/segments/](http://strava.github.io/api/v3/segments/) for more info
+
+```ruby
+
+@client.retrieve_a_segment(:some_id)
+
+@client.list_starred_segment
+
+@client.segment_leaderboards(:some_id)
+
+@client.segment_explorer
+
+```
+
+### Segment Effort
+
+Each method returns a JSON object - see [http://strava.github.io/api/v3/efforts/](http://strava.github.io/api/v3/efforts/) for more info
+
+```ruby
+
+@client.retrieve_a_segment_effort(:some_id)
+
+```
+
+### Stream
+
+Each method returns a JSON object - see [http://strava.github.io/api/v3/streams/](http://strava.github.io/api/v3/streams/) for more info
+
+```ruby
+
+@client.retrieve_activity_streams(:some_id)
+
+@client.retrieve_effort_streams(:some_id)
+
+@client.retrieve_segment_streams(:some_id)
+
+```
 
 ## Contributors
 
 * Jared Holdcroft
+* James Chevalier
