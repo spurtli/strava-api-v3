@@ -1,5 +1,6 @@
-require 'strava/api/v3/athlete'
 require 'strava/api/v3/activity'
+require 'strava/api/v3/athlete'
+require 'strava/api/v3/club'
 require 'strava/api/v3/gear'
 require 'strava/api/v3/segment'
 require 'strava/api/v3/stream'
@@ -8,8 +9,9 @@ module Strava::Api::V3
 
   class Client
 
-    include Athlete
     include Activity
+    include Athlete
+    include Club
     include Gear
     include Segment
     include Stream
