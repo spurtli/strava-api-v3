@@ -3,6 +3,7 @@ require 'strava/api/v3/athlete'
 require 'strava/api/v3/club'
 require 'strava/api/v3/gear'
 require 'strava/api/v3/segment'
+require 'strava/api/v3/segment_effort'
 require 'strava/api/v3/stream'
 
 module Strava::Api::V3
@@ -14,6 +15,7 @@ module Strava::Api::V3
     include Club
     include Gear
     include Segment
+    include SegmentEffort
     include Stream
 
     # Define the same set of accessors as the Awesome module
