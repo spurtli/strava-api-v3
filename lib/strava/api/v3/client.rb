@@ -1,5 +1,6 @@
 require 'strava/api/v3/athlete'
 require 'strava/api/v3/activity'
+require 'strava/api/v3/gear'
 
 module Strava::Api::V3
 
@@ -7,6 +8,7 @@ module Strava::Api::V3
 
     include Athlete
     include Activity
+    include Gear
 
     # Define the same set of accessors as the Awesome module
     attr_accessor *Configuration::VALID_CONFIG_KEYS
