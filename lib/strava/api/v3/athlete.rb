@@ -43,7 +43,7 @@ module Strava::Api::V3
     # @return athlete json (see http://strava.github.io/api/v3/athlete/)
     def list_athlete_segment_efforts(id, args = {}, options = {}, &block)
       # Fetches the connections for given object.
-      api_call("athletes/#{id}/komsd", args, "get", options, &block)
+      api_call("athletes/#{id}/koms", args, "get", options, &block)
     end
   end
 end
