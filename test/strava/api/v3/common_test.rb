@@ -3,7 +3,7 @@ require 'helper'
 ApiClass = Class.new do
   include Strava::Api::V3::Common
 
-  def initialize api_result: 'result'
+  def initialize api_result = 'result'
     @api_result = api_result
   end
   def api(path, args = {}, verb = "get", options = {}, &error_checking_block)
