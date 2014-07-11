@@ -32,6 +32,8 @@ module Strava::Api::V3
         send("#{key}=", merged_options[key])
       end
 
+      @logger = options[:logger] || Logger.new(STDOUT)
+      @logger.debug "Access Token: #{self.access_token}"
     end
 
   end # Client
