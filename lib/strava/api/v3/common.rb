@@ -19,11 +19,17 @@ module Strava::Api::V3
     # @raise [Stava::Api::V3::APIError] if Strava returns an error
     #
     # @return the result from Strava
-    def api_call(path, args = {}, verb = "get", options = {}, &post_processing)
-      result = api(path, args, verb, options) do |response|
+    def api_call(path, args = {}, verb = 'get', options = {}, &post_processing)
+      pre_call = options[:pre_call]
+      pre_call_args = {path: path, args: args, verb: verb}
+      pre_call_result = pre_call.call(pre_call_args) unless pre_call.nil?
+      result = pre_call_result || api(path, args, verb, options) do |response|
         error = check_response(response.code, response.body)
         raise error if error
       end
+
+      post_call = options[:post_call]
+      post_call.call(result, pre_call_args) unless post_call.nil?
 
       # now process as appropriate for the given call (get picture header, etc.)
       post_processing ? post_processing.call(result) : result
@@ -45,13 +51,14 @@ module Strava::Api::V3
     #
     # @raise [Strava::Api::V3::ServerError] if Strava returns an error (response status >= 500)
     #
-    # @return the body of the response from Strava 
+    # @return the body of the response from Strava
     def api(path, args = {}, verb = "get", options = {}, &error_checking_block)
       # If a access token is explicitly provided, use that
       # This is explicitly needed in batch requests so GraphCollection
       # results preserve any specific access tokens provided
       args["access_token"] ||= self.access_token ||= Strava::Api::V3::Configuration::DEFAULT_ACCESS_TOKEN
 
+      @logger.debug "Args: #{args}"
       # Translate any arrays in the params into comma-separated strings
       args = sanitize_request_parameters(args)
 
@@ -91,6 +98,9 @@ module Strava::Api::V3
         if value.is_a?(Array) && value.none? {|entry| entry.is_a?(Enumerable) && !entry.is_a?(String)}
           value = value.join(",")
         end
+        value = value.to_time if value.is_a? DateTime
+        value = value.to_i if value.is_a? Time
+
         result.merge(key => value)
       end
     end
@@ -128,6 +138,6 @@ module Strava::Api::V3
             ClientError.new(http_status, response_body, error_info)
           end
         end
-      end    
+      end
 end
 end
