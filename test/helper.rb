@@ -1,4 +1,4 @@
-require 'strava/api/v3'
-require 'minitest/spec'
 require 'minitest/autorun'
+require 'minitest/spec'
 require 'minitest/mock'
+require 'strava/api/v3'
