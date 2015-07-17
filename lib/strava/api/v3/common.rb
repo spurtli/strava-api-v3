@@ -66,7 +66,7 @@ module Strava::Api::V3
       path = "/#{path}" unless path =~ /^\//
 
       # make the request via the provided service
-      result = HTTParty.get("#{Strava::Api::V3::Configuration::DEFAULT_ENDPOINT}#{path}", :query => args)
+      result = HTTParty.public_send(verb, "#{Strava::Api::V3::Configuration::DEFAULT_ENDPOINT}#{path}", :query => args)
 
       if result.code.to_i >= 500
         raise Strava::Api::V3::ServerError.new(result.code.to_i, result.body)
