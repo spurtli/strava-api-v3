@@ -6,7 +6,7 @@ module Strava::Api::V3
     include Common
 
     # This request is used to retrieve information about the currently authenticated athlete.
-    # 
+    #
     # See {http://strava.github.io/api/v3/athlete/#get-details} for full details
     #
     # @param args any additional arguments
@@ -20,7 +20,7 @@ module Strava::Api::V3
     end
 
     # This request is used to retrieve information about any athlete on Strava.
-    # 
+    #
     # See {http://strava.github.io/api/v3/athlete/#get-another-details} for full details
     #
     # @param id athlete id
@@ -36,7 +36,7 @@ module Strava::Api::V3
 
     # Returns an array of segment efforts representing KOMs/QOMs and course records held by the given athlete.
     # Results are sorted by date, newest first. Pagination is supported.
-    # 
+    #
     # See {http://strava.github.io/api/v3/athlete/#koms} for full details
     #
     # @param id athlete id
@@ -77,12 +77,17 @@ module Strava::Api::V3
       api_call("athlete/followers", args, "get", options, &block)
     end
 
-    # Totals and stats
-    # Returns recent (last 4 weeks), year to date and all time stats for a given athlete.
-    # Only available for the authenticated athlete.
-    # This is the recommended endpoint when polling for athlete upload events.
+    # Returns an array of recent (last 4 weeks), year to date and all time stats for a given athlete.
     #
-    def list_specific_athlete_stats(id, args = {}, options = {}, &block)
+    # See {http://strava.github.io/api/v3/athlete/#stats} for full details
+    #
+    # @param id athlete id
+    # @param args any additional arguments
+    # @param options (see #get_object)
+    # @param block post processing code block
+    #
+    # @return segment effort json array (http://strava.github.io/api/v3/athlete/#stats)
+    def totals_and_stats(id, args = {}, options = {}, &block)
       api_call("athletes/#{id}/stats", args, "get", options, &block)
     end
   end
