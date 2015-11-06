@@ -73,5 +73,17 @@ module Strava::Api::V3
       # Fetches the connections for given object.
       api_call("activities/#{id}/laps", args, 'get', options, &block)
     end
+
+    # Updates an activity
+    # See {http://strava.github.io/api/v3/activities/#put-updates} for full details
+    #
+    # @param args any additional arguments
+    # @param options (see #get_object)
+    # @param block post processing code block
+    #
+    # @return updated activities json (see http://strava.github.io/api/v3/activities/)
+    def update_an_activity(id, args = {}, options = {}, &block)
+      api_call("activities/#{id}", args, 'put', options, &block)
+    end
   end
 end
