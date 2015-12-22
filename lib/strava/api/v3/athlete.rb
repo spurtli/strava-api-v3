@@ -63,5 +63,14 @@ module Strava::Api::V3
     def list_specific_athlete_friends(id, args = {}, options = {}, &block)
       api_call("athletes/#{id}/friends", args, "get", options, &block)
     end
+
+    # Totals and stats
+    # Returns recent (last 4 weeks), year to date and all time stats for a given athlete.
+    # Only available for the authenticated athlete.
+    # This is the recommended endpoint when polling for athlete upload events.
+    #
+    def list_specific_athlete_stats(id, args = {}, options = {}, &block)
+      api_call("athletes/#{id}/stats", args, "get", options, &block)
+    end
   end
 end
