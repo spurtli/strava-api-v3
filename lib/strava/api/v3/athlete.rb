@@ -5,7 +5,7 @@ module Strava::Api::V3
 
     include Common
     # Fetch information about the current athlete
-    # 
+    #
     # See {http://strava.github.io/api/v3/athlete/} for full details
     #
     # @param args any additional arguments
@@ -19,7 +19,7 @@ module Strava::Api::V3
     end
 
     # Fetch information about a specific athlete
-    # 
+    #
     # See {http://strava.github.io/api/v3/athlete/} for full details
     #
     # @param args any additional arguments
@@ -33,7 +33,7 @@ module Strava::Api::V3
     end
 
     # Fetch information about a specific athlete
-    # 
+    #
     # See {http://strava.github.io/api/v3/athlete/} for full details
     #
     # @param args any additional arguments
@@ -44,6 +44,24 @@ module Strava::Api::V3
     def list_athlete_segment_efforts(id, args = {}, options = {}, &block)
       # Fetches the connections for given object.
       api_call("athletes/#{id}/komsd", args, "get", options, &block)
+    end
+
+    # List athlete friends
+    #
+    # Friends are users the current athlete is following.
+    # The activities owned by these users will appear in the current athlete’s activity feed.
+    #
+    def list_athlete_friends(args = {}, options = {}, &block)
+      api_call("athlete/friends", args, "get", options, &block)
+    end
+
+    # List specific athlete friends
+    #
+    # Friends are users the current athlete is following.
+    # The activities owned by these users will appear in the current athlete’s activity feed.
+    #
+    def list_specific_athlete_friends(id, args = {}, options = {}, &block)
+      api_call("athletes/#{id}/friends", args, "get", options, &block)
     end
   end
 end
