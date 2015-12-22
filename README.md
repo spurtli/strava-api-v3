@@ -49,6 +49,12 @@ Each method returns a JSON object - see [http://strava.github.io/api/v3/athlete/
 
 @client.list_athlete_segment_efforts(:some_id) # fetch K/QOMs/CRs for another athlete by id
 
+@client.list_athlete_friends # fetch friends list
+
+@client.list_specific_athlete_friends(:some_id) # fetch friends list another athlete by id
+
+@client.list_specific_athlete_stats(:some_id) # fetch athlete totals and stats
+
 ```
 
 ### Club
