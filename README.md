@@ -119,7 +119,7 @@ Each method returns a JSON object - see [http://strava.github.io/api/v3/streams/
 
 ### Upload
 
-Support for uploading activity files (FIT, TCX and GPX file types are supported by Strava. See [https://strava.github.io/api/v3/uploads/] for more info
+Support for uploading activity files (FIT, TCX and GPX file types are supported by Strava. See [https://strava.github.io/api/v3/uploads/](https://strava.github.io/api/v3/uploads/) for more info
 
 ```ruby
 
