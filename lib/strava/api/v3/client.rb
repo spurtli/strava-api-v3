@@ -6,6 +6,7 @@ require 'strava/api/v3/gear'
 require 'strava/api/v3/segment'
 require 'strava/api/v3/segment_effort'
 require 'strava/api/v3/stream'
+require 'strava/api/v3/upload'
 
 module Strava::Api::V3
 
@@ -18,6 +19,7 @@ module Strava::Api::V3
     include Segment
     include SegmentEffort
     include Stream
+    include Upload
 
     # Define the same set of accessors as the Awesome module
     attr_accessor *Configuration::VALID_CONFIG_KEYS

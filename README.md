@@ -117,6 +117,30 @@ Each method returns a JSON object - see [http://strava.github.io/api/v3/streams/
 
 ```
 
+### Upload
+
+Support for uploading activity files (FIT, TCX and GPX file types are supported by Strava. See [https://strava.github.io/api/v3/uploads/](https://strava.github.io/api/v3/uploads/) for more info
+
+```ruby
+
+# Prepare options for upload
+options = {}
+options[:activity_type] = 'ride'
+options[:data_type] = 'tcx'
+
+# Open the file from the file systems
+options[:file] = File.new('myfile.tcx')
+
+# Submit upload and get upload ID
+status = @client.upload_an_activity(options)
+upload_id = status['id']
+
+# Re-poll for status
+status = @client.retrieve_upload_status(upload_id)
+
+```
+
+
 ## Contributors
 
 * Jared Holdcroft
