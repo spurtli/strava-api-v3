@@ -64,6 +64,15 @@ module Strava::Api::V3
       api_call("athletes/#{id}/friends", args, "get", options, &block)
     end
 
+    # List specific athlete followers
+    #
+    # Friends are users the current athlete is following.
+    # The activities owned by these users will appear in the current athlete’s activity feed.
+    #
+    def list_athlete_followers(args = {}, options = {}, &block)
+      api_call("athlete/followers", args, "get", options, &block)
+    end
+
     # Totals and stats
     # Returns recent (last 4 weeks), year to date and all time stats for a given athlete.
     # Only available for the authenticated athlete.
