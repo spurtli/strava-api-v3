@@ -50,6 +50,33 @@ module Strava::Api::V3
       api_call("athletes/#{id}/koms", args, "get", options, &block)
     end
 
+    # List athlete friends
+    #
+    # Friends are users the current athlete is following.
+    # The activities owned by these users will appear in the current athlete’s activity feed.
+    #
+    def list_athlete_friends(args = {}, options = {}, &block)
+      api_call("athlete/friends", args, "get", options, &block)
+    end
+
+    # List specific athlete friends
+    #
+    # Friends are users the current athlete is following.
+    # The activities owned by these users will appear in the current athlete’s activity feed.
+    #
+    def list_specific_athlete_friends(id, args = {}, options = {}, &block)
+      api_call("athletes/#{id}/friends", args, "get", options, &block)
+    end
+
+    # List specific athlete followers
+    #
+    # Friends are users the current athlete is following.
+    # The activities owned by these users will appear in the current athlete’s activity feed.
+    #
+    def list_athlete_followers(args = {}, options = {}, &block)
+      api_call("athlete/followers", args, "get", options, &block)
+    end
+
     # Returns an array of recent (last 4 weeks), year to date and all time stats for a given athlete.
     #
     # See {http://strava.github.io/api/v3/athlete/#stats} for full details
@@ -61,8 +88,6 @@ module Strava::Api::V3
     #
     # @return segment effort json array (http://strava.github.io/api/v3/athlete/#stats)
     def totals_and_stats(id, args = {}, options = {}, &block)
-      # Fetches the connections for given object.
-      api_call("athletes/#{id}/stats", args, "get", options, &block)
     end
   end
 end
