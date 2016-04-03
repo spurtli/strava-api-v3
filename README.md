@@ -53,7 +53,7 @@ Each method returns a JSON object - see [http://strava.github.io/api/v3/athlete/
 
 @client.list_specific_athlete_friends(:some_id) # fetch friends list another athlete by id
 
-@client.list_specific_athlete_stats(:some_id) # fetch athlete totals and stats
+@client.totals_and_stats(:some_id) # fetch athlete totals and stats
 
 ```
 
