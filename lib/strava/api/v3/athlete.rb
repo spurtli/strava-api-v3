@@ -88,6 +88,7 @@ module Strava::Api::V3
     #
     # @return segment effort json array (http://strava.github.io/api/v3/athlete/#stats)
     def totals_and_stats(id, args = {}, options = {}, &block)
+      api_call("athletes/#{id}/stats", args, "get", options, &block)
     end
   end
 end
