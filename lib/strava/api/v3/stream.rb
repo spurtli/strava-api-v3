@@ -45,5 +45,19 @@ module Strava::Api::V3
       # Fetches the connections for given object.
       api_call("segments/#{id}/streams/#{types}", args, 'get', options, &block)
     end
+
+    # Fetch information about a stream for a specific route
+    #
+    # See {http://strava.github.io/api/v3/streams} for full details
+    #
+    # @param args any additional arguments
+    # @param options (see #get_object)
+    # @param block post processing code block
+    #
+    # @return stream json (see http://strava.github.io/api/v3/streams)
+    def retrieve_route_streams(id, args = {}, options = {}, &block)
+      # Fetches the connections for given object.
+      api_call("routes/#{id}/streams/", args, 'get', options, &block)
+    end
   end
 end
