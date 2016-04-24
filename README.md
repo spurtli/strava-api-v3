@@ -83,6 +83,18 @@ Each method returns a JSON object - see [http://strava.github.io/api/v3/gear/](h
 
 ```
 
+### Route
+
+Each method returns a JSON object - see [http://strava.github.io/api/v3/routes/](http://strava.github.io/api/v3/routes/) for more info
+
+```ruby
+
+@client.retrieve_a_route(:some_id)
+
+@client.list_athlete_route
+
+```
+
 ### Segment
 
 Each method returns a JSON object - see [http://strava.github.io/api/v3/segments/](http://strava.github.io/api/v3/segments/) for more info
@@ -119,7 +131,10 @@ Each method returns a JSON object - see [http://strava.github.io/api/v3/streams/
 
 @client.retrieve_effort_streams(:some_id)
 
+@client.retrieve_route_streams(:some_id)
+
 @client.retrieve_segment_streams(:some_id)
+
 
 ```
 
