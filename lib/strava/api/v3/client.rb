@@ -1,5 +1,6 @@
 require 'logger'
 require 'strava/api/v3/activity'
+require 'strava/api/v3/activity_extras'
 require 'strava/api/v3/athlete'
 require 'strava/api/v3/club'
 require 'strava/api/v3/gear'
@@ -14,6 +15,7 @@ module Strava::Api::V3
   class Client
 
     include Activity
+    include ActivityExtras
     include Athlete
     include Club
     include Gear

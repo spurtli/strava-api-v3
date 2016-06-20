@@ -37,6 +37,23 @@ Each method returns a JSON object - see [http://strava.github.io/api/v3/activiti
 
 ```
 
+### Activity extras
+
+Each method returns a JSON object of respective type - see 
+[http://strava.github.io/api/v3/comments/](http://strava.github.io/api/v3/comments/), 
+[http://strava.github.io/api/v3/kudos/](http://strava.github.io/api/v3/kudos/) and 
+[http://strava.github.io/api/v3/photos/](http://strava.github.io/api/v3/photos/) for more info
+
+```ruby
+
+@client.list_activity_comments(:activity_id)
+
+@client.list_activity_kudos(:activity_id)
+
+@client.list_activity_photos(:activity_id)
+
+```
+
 ### Athlete
 
 Each method returns a JSON object - see [http://strava.github.io/api/v3/athlete/](http://strava.github.io/api/v3/athlete/) for more info
