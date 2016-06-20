@@ -32,7 +32,7 @@ module Strava::Api::V3
       api_call("activities/#{id}/kudos", args, 'get', options, &block)
     end
 
-    # Fetch list of photos from a specific activity
+    # Fetch list of photos from a specific activity, only if it is your activity
     #
     # See {https://strava.github.io/api/v3/photos/} for full details
     #
@@ -42,7 +42,7 @@ module Strava::Api::V3
     #
     # @return photos json (see http://strava.github.io/api/v3/photos/)
     def list_activity_photos(id, args = {}, options = {}, &block)
-      args['photo_sources'] = true if args == {}
+      args['photo_sources'] = 'true'
       # Fetches the connections for given object.
       api_call("activities/#{id}/photos", args, 'get', options, &block)
     end

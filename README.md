@@ -50,7 +50,7 @@ Each method returns a JSON object of respective type - see
 
 @client.list_activity_kudos(:activity_id)
 
-@client.list_activity_photos(:activity_id)
+@client.list_activity_photos(:activity_id) # only if you created the activity...
 
 ```
 
