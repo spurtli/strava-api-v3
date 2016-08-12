@@ -90,5 +90,20 @@ module Strava::Api::V3
     def totals_and_stats(id, args = {}, options = {}, &block)
       api_call("athletes/#{id}/stats", args, "get", options, &block)
     end
+
+    # This request is used to retrieve zone information about the currently authenticated athlete.
+    #
+    # See {http://strava.github.io/api/v3/athlete/#zones} for full details
+    #
+    # @param args any additional arguments
+    # @param options (see #get_object)
+    # @param block post processing code block
+    #
+    # @return zone json (see http://strava.github.io/api/v3/athlete/#zones)
+    def retrieve_current_athlete_zones(args = {}, options = {}, &block)
+      # Fetches the connections for given object.
+      api_call("athlete/zones", args, "get", options, &block)
+    end
+
   end
 end
