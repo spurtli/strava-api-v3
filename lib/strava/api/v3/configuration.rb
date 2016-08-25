@@ -7,6 +7,7 @@ module Strava
         VALID_CONFIG_KEYS     = VALID_CONNECTION_KEYS + VALID_OPTIONS_KEYS
 
         DEFAULT_ENDPOINT    = 'https://www.strava.com/api/v3/'
+        DEFAULT_AUTH_ENDPOINT = 'https://www.strava.com/oauth/token'
         DEFAULT_METHOD      = :get
         DEFAULT_USER_AGENT  = "Strava API V3 Ruby Gem #{Strava::Api::V3::VERSION}".freeze
 
