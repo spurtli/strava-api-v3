@@ -13,6 +13,7 @@ gem install 'strava-api-v3'
 At this point you will need to have the user authorise your application using OAuth2.
 
 ```ruby
+require 'strava/api/v3'
 
 @client = Strava::Api::V3::Client.new(:access_token => "MY_ACCESS_TOKEN")
 ```
