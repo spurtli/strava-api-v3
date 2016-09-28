@@ -40,9 +40,9 @@ Each method returns a JSON object - see [http://strava.github.io/api/v3/activiti
 
 ### Activity extras
 
-Each method returns a JSON object of respective type - see 
-[http://strava.github.io/api/v3/comments/](http://strava.github.io/api/v3/comments/), 
-[http://strava.github.io/api/v3/kudos/](http://strava.github.io/api/v3/kudos/) and 
+Each method returns a JSON object of respective type - see
+[http://strava.github.io/api/v3/comments/](http://strava.github.io/api/v3/comments/),
+[http://strava.github.io/api/v3/kudos/](http://strava.github.io/api/v3/kudos/) and
 [http://strava.github.io/api/v3/photos/](http://strava.github.io/api/v3/photos/) for more info
 
 ```ruby
@@ -176,6 +176,18 @@ upload_id = status['id']
 
 # Re-poll for status
 status = @client.retrieve_upload_status(upload_id)
+
+```
+
+### Authentication
+
+Retrieve user token and information (athlete). See [http://strava.github.io/api/v3/oauth](http://strava.github.io/api/v3/oauth) for more info
+
+```ruby
+
+access_information = Strava::Api::V3::Auth.retrieve_access('client_id', 'client_secret', 'code')
+access_token = access_information['access_token']
+athlete_information = access_information['athlete']
 
 ```
 
