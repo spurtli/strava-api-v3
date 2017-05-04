@@ -8,6 +8,7 @@ module Strava::Api::V3
     #
     # See {http://strava.github.io/api/v3/routes/} for full details
     #
+    # @param id route id
     # @param args any additional arguments
     # @param options (see #get_object)
     # @param block post processing code block
