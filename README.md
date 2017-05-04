@@ -127,7 +127,7 @@ Each method returns a JSON object - see [http://strava.github.io/api/v3/running_
 
 ```ruby
 
-@client.retrieve_race_details(:some_id)
+@client.retrieve_running_race_details(:race_id)
 
 @client.list_running_races
 

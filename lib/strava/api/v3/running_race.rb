@@ -14,7 +14,7 @@ module Strava::Api::V3
     # @param block post processing code block
     #
     # @return running race json (see http://strava.github.io/api/v3/running_races/)
-    def retrieve_race_details(id, args = {}, options = {}, &block)
+    def retrieve_running_race_details(id, args = {}, options = {}, &block)
       api_call("running_races/#{id}", args, 'get', options, &block)
     end
 
