@@ -8,6 +8,7 @@ module Strava::Api::V3
     #
     # See {http://strava.github.io/api/v3/clubs/} for full details
     #
+    # @param id club id
     # @param args any additional arguments
     # @param options (see #get_object)
     # @param block post processing code block
@@ -16,6 +17,22 @@ module Strava::Api::V3
     def retrieve_a_club(id, args = {}, options = {}, &block)
       # Fetches the connections for given object.
       api_call("clubs/#{id}", args, 'get', options, &block)
+    end
+
+    # Announcements are posts sent by Club Admins or Owners to the members of a club.
+    # Only members of private clubs can access their announcements.
+    # The objects are returned in summary representation.
+    #
+    # See {http://strava.github.io/api/v3/clubs/#get-announcements} for full details
+    #
+    # @param id club id
+    # @param args any additional arguments
+    # @param options (see #get_object)
+    # @param block post processing code block
+    #
+    # @return an array of club announcement summary representations.
+    def list_club_announcements(id, args = {}, option = {}, &block)
+      api_call("clubs/#{id}/announcements", args, 'get', option, &block)
     end
 
     # Fetch information about the clubs for the current user
@@ -32,24 +49,11 @@ module Strava::Api::V3
       api_call('athlete/clubs', args, 'get', options, &block)
     end
 
-    # Announcements are posts sent by Club Admins or Owners to the members of a club. Only members of private clubs can access their announcements. The objects are returned in summary representation.
-    # 
-    # See {http://strava.github.io/api/v3/clubs/#get-announcements} for full details
-    # 
-    # @param id required
-    # @param args any additional arguments
-    # @param options (see #get_object)
-    # @param block post processing code block
-    # 
-    # @return an array of club announcement summary representations.
-    def list_club_announcements(id, args = {}, option = {}, &block)
-        api_call("clubs/#{id}/announcements", args, 'get', option, &block)
-    end
-
     # Fetch information about the members of a specific club
     #
     # See {http://strava.github.io/api/v3/clubs/} for full details
     #
+    # @param id club id
     # @param args any additional arguments
     # @param options (see #get_object)
     # @param block post processing code block
@@ -64,6 +68,7 @@ module Strava::Api::V3
     #
     # See {http://strava.github.io/api/v3/clubs/} for full details
     #
+    # @param id club id
     # @param args any additional arguments
     # @param options (see #get_object)
     # @param block post processing code block
@@ -78,6 +83,7 @@ module Strava::Api::V3
     #
     # See {http://strava.github.io/api/v3/clubs/} for full details
     #
+    # @param id club id
     # @param args any additional arguments
     # @param options (see #get_object)
     # @param block post processing code block
@@ -86,6 +92,36 @@ module Strava::Api::V3
     def list_club_activities(id, args = {}, options = {}, &block)
       # Fetches the connections for given object.
       api_call("clubs/#{id}/activities", args, 'get', options, &block)
+    end
+
+    # Join a club on behalf of the authenticated athlete.
+    # If the club is private the join will need to be approved by a club admin
+    # unless the authenticated athlete had previously been invited to the club.
+    #
+    # See {http://strava.github.io/api/v3/clubs/} for full details
+    #
+    # @param id club id
+    # @param args any additional arguments
+    # @param options (see #get_object)
+    # @param block post processing code block
+    #
+    # @return club json (see http://strava.github.io/api/v3/clubs/)
+    def join_a_club(id, args = {}, options = {}, &block)
+      api_call("clubs/#{id}/join", args, 'post', options, &block)
+    end
+
+    # Leave a club on behalf of the authenticated user
+    #
+    # See {http://strava.github.io/api/v3/clubs/} for full details
+    #
+    # @param id club id
+    # @param args any additional arguments
+    # @param options (see #get_object)
+    # @param block post processing code block
+    #
+    # @return club json (see http://strava.github.io/api/v3/clubs/)
+    def leave_a_club(id, args = {}, options = {}, &block)
+      api_call("clubs/#{id}/leave", args, 'post', options, &block)
     end
   end
 end
