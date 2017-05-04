@@ -81,13 +81,21 @@ Each method returns a JSON object - see [http://strava.github.io/api/v3/clubs/](
 
 ```ruby
 
-@client.retrieve_a_club(:some_id)
+@client.retrieve_a_club(:club_id)
+
+@client.list_club_announcements(:club_id)
 
 @client.list_athlete_clubs
 
-@client.list_club_members(:some_id)
+@client.list_club_members(:club_id)
 
-@client.list_club_activities(:some_id)
+@client.list_club_admins(:club_id)
+
+@client.list_club_activities(:club_id)
+
+@client.join_a_club(:club_id)
+
+@client.leave_a_club(:club_id)
 
 ```
 
