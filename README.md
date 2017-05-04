@@ -109,7 +109,7 @@ Each method returns a JSON object - see [http://strava.github.io/api/v3/routes/]
 
 @client.retrieve_a_route(:some_id)
 
-@client.list_athlete_route
+@client.list_athlete_routes
 
 ```
 
