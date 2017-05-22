@@ -26,24 +26,28 @@ Each method returns a JSON object - see [http://strava.github.io/api/v3/activiti
 
 ```ruby
 
-@client.retrieve_an_activity(:some_id)
+@client.retrieve_an_activity(:activity_id)
+
+@client.update_an_activity(:activity_id) # update an activity (require write permissions)
 
 @client.list_athlete_activities
 
 @client.list_friends_activities
 
-@client.list_activity_zones(:some_id)
+@client.list_related_activities(:activity_id) # fetch activities that were matched as "with this group"
 
-@client.list_activity_laps(:some_id)
+@client.list_activity_zones(:activity_id) # fetch heartrate and power zones of an activity (require a premium account subscription)
+
+@client.list_activity_laps(:activity_id)
 
 ```
 
 ### Activity extras
 
 Each method returns a JSON object of respective type - see
-[http://strava.github.io/api/v3/comments/](http://strava.github.io/api/v3/comments/),
-[http://strava.github.io/api/v3/kudos/](http://strava.github.io/api/v3/kudos/) and
-[http://strava.github.io/api/v3/photos/](http://strava.github.io/api/v3/photos/) for more info
+[https://strava.github.io/api/v3/comments/](https://strava.github.io/api/v3/comments/),
+[https://strava.github.io/api/v3/kudos/](https://strava.github.io/api/v3/kudos/) and
+[https://strava.github.io/api/v3/activity_photos/](https://strava.github.io/api/v3/activity_photos/) for more info
 
 ```ruby
 
