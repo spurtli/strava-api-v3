@@ -3,6 +3,7 @@ require 'strava/api/v3/activity'
 require 'strava/api/v3/activity_extras'
 require 'strava/api/v3/athlete'
 require 'strava/api/v3/athlete_extras'
+require 'strava/api/v3/club_group_event'
 require 'strava/api/v3/club'
 require 'strava/api/v3/gear'
 require 'strava/api/v3/route'
@@ -20,6 +21,7 @@ module Strava::Api::V3
     include ActivityExtras
     include Athlete
     include AthleteExtras
+    include ClubGroupEvent
     include Club
     include Gear
     include Route

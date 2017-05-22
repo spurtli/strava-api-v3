@@ -100,7 +100,7 @@ Each method returns a JSON object of respective type - see
 
 ### Club
 
-Each method returns a JSON object - see [http://strava.github.io/api/v3/clubs/](http://strava.github.io/api/v3/clubs/) for more info
+Each method returns a JSON object - see [https://strava.github.io/api/v3/clubs/](https://strava.github.io/api/v3/clubs/) for more info
 
 ```ruby
 
@@ -116,9 +116,29 @@ Each method returns a JSON object - see [http://strava.github.io/api/v3/clubs/](
 
 @client.list_club_activities(:club_id)
 
-@client.join_a_club(:club_id)
+@client.join_a_club(:club_id) # join a club on behalf of the authenticated athlete (require write permissions)
 
-@client.leave_a_club(:club_id)
+@client.leave_a_club(:club_id) # leave a club on behalf of the authenticated user (require write permissions)
+
+```
+
+### Club Group Event
+
+Each method returns a JSON object - see [https://strava.github.io/api/v3/club_group_events/](https://strava.github.io/api/v3/club_group_events/) for more info
+
+```ruby
+
+@client.retrieve_a_group_event(:club_event_id)
+
+@client.list_club_group_events(:club_event_id)
+
+@client.join_a_group_event(:club_event_id) # join a group event on behalf of the authenticated athlete (require write permissions)
+
+@client.leave_a_group_event(:club_event_id) # leave a group event on behalf of the authenticated athlete (require write permissions)
+
+@client.delete_a_group_event(:club_event_id) # delete (and cancel) an event, which must be editable by the authenticating user
+
+@client.list_joined_athletes(:club_event_id)
 
 ```
 
