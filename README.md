@@ -67,15 +67,34 @@ Each method returns a JSON object - see [http://strava.github.io/api/v3/athlete/
 
 @client.retrieve_current_athlete # fetch the authenticated athlete
 
-@client.retrieve_another_athlete(:some_id) # fetch another athlete by id
+@client.retrieve_another_athlete(:athlete_id) # fetch another athlete by id
 
-@client.list_athlete_segment_efforts(:some_id) # fetch K/QOMs/CRs for another athlete by id
+@client.update_current_athlete # update the authenticated athlete (require write permissions)
 
-@client.list_athlete_friends # fetch friends list
+@client.retrieve_current_athlete_zones # fetch zone information of the authenticated athlete
 
-@client.list_specific_athlete_friends(:some_id) # fetch friends list another athlete by id
+@client.totals_and_stats(:athlete_id) # fetch totals and stats for an athlete by id
 
-@client.totals_and_stats(:some_id) # fetch athlete totals and stats
+@client.list_athlete_segment_efforts(:athlete_id) # fetch K/QOMs/CRs for an athlete by id
+
+```
+
+### Athlete extras
+
+Each method returns a JSON object of respective type - see
+[https://strava.github.io/api/v3/follow/](https://strava.github.io/api/v3/follow/) for more info
+
+```ruby
+
+@client.list_athlete_friends
+
+@client.list_specific_athlete_friends(:athlete_id)
+
+@client.list_athlete_followers
+
+@client.list_specific_athlete_followers(:athlete_id)
+
+@client.list_both_following_athletes(:athlete_id)
 
 ```
 
