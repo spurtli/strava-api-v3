@@ -166,13 +166,13 @@ Each method returns a JSON object - see [http://strava.github.io/api/v3/routes/]
 
 ### Running Races
 
-Each method returns a JSON object - see [http://strava.github.io/api/v3/running_races/](http://strava.github.io/api/v3/running_races/) for more info
+Each method returns a JSON object - see [https://strava.github.io/api/v3/running_races/](https://strava.github.io/api/v3/running_races/) for more info
 
 ```ruby
 
-@client.retrieve_running_race_details(:race_id)
-
 @client.list_running_races
+
+@client.retrieve_running_race_details(:race_id)
 
 ```
 
@@ -182,13 +182,15 @@ Each method returns a JSON object - see [http://strava.github.io/api/v3/segments
 
 ```ruby
 
-@client.retrieve_a_segment(:some_id)
+@client.retrieve_a_segment(:segment_id)
 
 @client.list_starred_segment
 
-@client.segment_leaderboards(:some_id)
+@client.segment_leaderboards(:segment_id)
 
 @client.segment_explorer
+
+@client.segment_list_efforts(:segment_id)
 
 ```
 
@@ -208,13 +210,13 @@ Each method returns a JSON object - see [http://strava.github.io/api/v3/streams/
 
 ```ruby
 
-@client.retrieve_activity_streams(:some_id)
+@client.retrieve_activity_streams(:activity_id)
 
-@client.retrieve_effort_streams(:some_id)
+@client.retrieve_effort_streams(:segment_effort_id)
 
-@client.retrieve_route_streams(:some_id)
+@client.retrieve_route_streams(:route_id)
 
-@client.retrieve_segment_streams(:some_id)
+@client.retrieve_segment_streams(:segment_id)
 
 
 ```
@@ -234,6 +236,7 @@ options[:data_type] = 'tcx'
 options[:file] = File.new('myfile.tcx')
 
 # Submit upload and get upload ID
+# Require write permission
 status = @client.upload_an_activity(options)
 upload_id = status['id']
 
@@ -257,5 +260,6 @@ athlete_information = access_information['athlete']
 
 ## Contributors
 
-* Jared Holdcroft
-* James Chevalier
+* [Jared Holdcroft](https://github.com/jaredholdcroft)
+* [James Chevalier](https://github.com/JamesChevalier)
+* [Yi Zeng](https://github.com/yizeng)

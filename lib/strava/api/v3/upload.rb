@@ -6,7 +6,7 @@ module Strava::Api::V3
 
     # Uploads an activity
     #
-    # See {https://strava.github.io/api/v3/uploads/} for full details
+    # See {https://strava.github.io/api/v3/uploads/#post-file} for full details
     #
     # @param args any additional arguments
     # @param options (see #get_object)
@@ -19,7 +19,7 @@ module Strava::Api::V3
 
     # Fetch information about an upload
     #
-    # See {https://strava.github.io/api/v3/uploads/} for full details
+    # See {https://strava.github.io/api/v3/uploads/#get-status} for full details
     #
     # @param args any additional arguments
     # @param options (see #get_object)
