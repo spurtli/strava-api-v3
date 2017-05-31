@@ -28,7 +28,7 @@ Each method returns a JSON object - see [http://strava.github.io/api/v3/activiti
 
 @client.retrieve_an_activity(:activity_id)
 
-@client.update_an_activity(:activity_id) # update an activity (require write permissions)
+@client.update_an_activity(:activity_id, {}) # update an activity (require write permissions)
 
 @client.list_athlete_activities
 
@@ -69,7 +69,7 @@ Each method returns a JSON object - see [http://strava.github.io/api/v3/athlete/
 
 @client.retrieve_another_athlete(:athlete_id) # fetch another athlete by id
 
-@client.update_current_athlete # update the authenticated athlete (require write permissions)
+@client.update_current_athlete({}) # update the authenticated athlete (require write permissions)
 
 @client.retrieve_current_athlete_zones # fetch zone information of the authenticated athlete
 
@@ -185,6 +185,8 @@ Each method returns a JSON object - see [http://strava.github.io/api/v3/segments
 @client.retrieve_a_segment(:segment_id)
 
 @client.list_starred_segment
+
+@client.star_a_segment(:segment_id, { starred: true }) # star a segment on behalf of the current authenticated user (require write permissions)
 
 @client.segment_leaderboards(:segment_id)
 
