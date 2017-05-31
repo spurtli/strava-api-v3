@@ -26,24 +26,31 @@ Each method returns a JSON object - see [http://strava.github.io/api/v3/activiti
 
 ```ruby
 
-@client.retrieve_an_activity(:some_id)
+# create a manually entered activity (require write permissions)
+@client.create_an_activity(name: 'Manually Created Activity', type: 'run', start_date_local: '2016-10-02T09:05:05Z', elapsed_time: 600)
+
+@client.retrieve_an_activity(:activity_id)
+
+@client.update_an_activity(:activity_id, description: 'New Description') # update an activity (require write permissions)
 
 @client.list_athlete_activities
 
 @client.list_friends_activities
 
-@client.list_activity_zones(:some_id)
+@client.list_related_activities(:activity_id) # fetch activities that were matched as "with this group"
 
-@client.list_activity_laps(:some_id)
+@client.list_activity_zones(:activity_id) # fetch heartrate and power zones of an activity (require a premium account subscription)
+
+@client.list_activity_laps(:activity_id)
 
 ```
 
 ### Activity extras
 
 Each method returns a JSON object of respective type - see
-[http://strava.github.io/api/v3/comments/](http://strava.github.io/api/v3/comments/),
-[http://strava.github.io/api/v3/kudos/](http://strava.github.io/api/v3/kudos/) and
-[http://strava.github.io/api/v3/photos/](http://strava.github.io/api/v3/photos/) for more info
+[https://strava.github.io/api/v3/comments/](https://strava.github.io/api/v3/comments/),
+[https://strava.github.io/api/v3/kudos/](https://strava.github.io/api/v3/kudos/) and
+[https://strava.github.io/api/v3/activity_photos/](https://strava.github.io/api/v3/activity_photos/) for more info
 
 ```ruby
 
@@ -63,21 +70,40 @@ Each method returns a JSON object - see [http://strava.github.io/api/v3/athlete/
 
 @client.retrieve_current_athlete # fetch the authenticated athlete
 
-@client.retrieve_another_athlete(:some_id) # fetch another athlete by id
+@client.retrieve_another_athlete(:athlete_id) # fetch another athlete by id
 
-@client.list_athlete_segment_efforts(:some_id) # fetch K/QOMs/CRs for another athlete by id
+@client.update_current_athlete(city: 'Lisbon') # update the authenticated athlete (require write permissions)
 
-@client.list_athlete_friends # fetch friends list
+@client.retrieve_current_athlete_zones # fetch zone information of the authenticated athlete
 
-@client.list_specific_athlete_friends(:some_id) # fetch friends list another athlete by id
+@client.totals_and_stats(:athlete_id) # fetch totals and stats for an athlete by id
 
-@client.totals_and_stats(:some_id) # fetch athlete totals and stats
+@client.list_athlete_segment_efforts(:athlete_id) # fetch K/QOMs/CRs for an athlete by id
+
+```
+
+### Athlete extras
+
+Each method returns a JSON object of respective type - see
+[https://strava.github.io/api/v3/follow/](https://strava.github.io/api/v3/follow/) for more info
+
+```ruby
+
+@client.list_athlete_friends
+
+@client.list_specific_athlete_friends(:athlete_id)
+
+@client.list_athlete_followers
+
+@client.list_specific_athlete_followers(:athlete_id)
+
+@client.list_both_following_athletes(:athlete_id)
 
 ```
 
 ### Club
 
-Each method returns a JSON object - see [http://strava.github.io/api/v3/clubs/](http://strava.github.io/api/v3/clubs/) for more info
+Each method returns a JSON object - see [https://strava.github.io/api/v3/clubs/](https://strava.github.io/api/v3/clubs/) for more info
 
 ```ruby
 
@@ -93,9 +119,29 @@ Each method returns a JSON object - see [http://strava.github.io/api/v3/clubs/](
 
 @client.list_club_activities(:club_id)
 
-@client.join_a_club(:club_id)
+@client.join_a_club(:club_id) # join a club on behalf of the authenticated athlete (require write permissions)
 
-@client.leave_a_club(:club_id)
+@client.leave_a_club(:club_id) # leave a club on behalf of the authenticated user (require write permissions)
+
+```
+
+### Club Group Event
+
+Each method returns a JSON object - see [https://strava.github.io/api/v3/club_group_events/](https://strava.github.io/api/v3/club_group_events/) for more info
+
+```ruby
+
+@client.retrieve_a_group_event(:club_event_id)
+
+@client.list_club_group_events(:club_event_id)
+
+@client.join_a_group_event(:club_event_id) # join a group event on behalf of the authenticated athlete (require write permissions)
+
+@client.leave_a_group_event(:club_event_id) # leave a group event on behalf of the authenticated athlete (require write permissions)
+
+@client.delete_a_group_event(:club_event_id) # delete (and cancel) an event, which must be editable by the authenticating user
+
+@client.list_joined_athletes(:club_event_id)
 
 ```
 
@@ -123,13 +169,13 @@ Each method returns a JSON object - see [http://strava.github.io/api/v3/routes/]
 
 ### Running Races
 
-Each method returns a JSON object - see [http://strava.github.io/api/v3/running_races/](http://strava.github.io/api/v3/running_races/) for more info
+Each method returns a JSON object - see [https://strava.github.io/api/v3/running_races/](https://strava.github.io/api/v3/running_races/) for more info
 
 ```ruby
 
-@client.retrieve_running_race_details(:race_id)
-
 @client.list_running_races
+
+@client.retrieve_running_race_details(:race_id)
 
 ```
 
@@ -139,13 +185,17 @@ Each method returns a JSON object - see [http://strava.github.io/api/v3/segments
 
 ```ruby
 
-@client.retrieve_a_segment(:some_id)
+@client.retrieve_a_segment(:segment_id)
 
 @client.list_starred_segment
 
-@client.segment_leaderboards(:some_id)
+@client.star_a_segment(:segment_id, starred: true) # star a segment on behalf of the current authenticated user (require write permissions)
+
+@client.segment_leaderboards(:segment_id)
 
 @client.segment_explorer
+
+@client.segment_list_efforts(:segment_id)
 
 ```
 
@@ -165,13 +215,13 @@ Each method returns a JSON object - see [http://strava.github.io/api/v3/streams/
 
 ```ruby
 
-@client.retrieve_activity_streams(:some_id)
+@client.retrieve_activity_streams(:activity_id)
 
-@client.retrieve_effort_streams(:some_id)
+@client.retrieve_effort_streams(:segment_effort_id)
 
-@client.retrieve_route_streams(:some_id)
+@client.retrieve_route_streams(:route_id)
 
-@client.retrieve_segment_streams(:some_id)
+@client.retrieve_segment_streams(:segment_id)
 
 
 ```
@@ -191,6 +241,7 @@ options[:data_type] = 'tcx'
 options[:file] = File.new('myfile.tcx')
 
 # Submit upload and get upload ID
+# Require write permission
 status = @client.upload_an_activity(options)
 upload_id = status['id']
 
@@ -214,5 +265,6 @@ athlete_information = access_information['athlete']
 
 ## Contributors
 
-* Jared Holdcroft
-* James Chevalier
+* [Jared Holdcroft](https://github.com/jaredholdcroft)
+* [James Chevalier](https://github.com/JamesChevalier)
+* [Yi Zeng](https://github.com/yizeng)

@@ -6,14 +6,14 @@ module Strava::Api::V3
 
     # Fetch information about a specific route
     #
-    # See {http://strava.github.io/api/v3/routes/} for full details
+    # See {https://strava.github.io/api/v3/routes/#retreive} for full details
     #
     # @param id route id
     # @param args any additional arguments
     # @param options (see #get_object)
     # @param block post processing code block
     #
-    # @return routes json (see http://strava.github.io/api/v3/routes/)
+    # @return a detailed representation of the route
     def retrieve_a_route(id, args = {}, options = {}, &block)
       # Fetches the connections for given object.
       api_call("routes/#{id}", args, 'get', options, &block)
@@ -21,13 +21,13 @@ module Strava::Api::V3
 
     # Fetch information about the current athlete's routes
     #
-    # See {http://strava.github.io/api/v3/routes/} for full details
+    # See {https://strava.github.io/api/v3/routes/#list} for full details
     #
     # @param args any additional arguments
     # @param options (see #get_object)
     # @param block post processing code block
     #
-    # @return routes json (see http://strava.github.io/api/v3/routes/)
+    # @return a list of an athlete’s routes in summary representation
     def list_athlete_routes(args = {}, options = {}, &block)
       # Fetches the connections for given object.
       api_call('athlete/routes', args, 'get', options, &block)
