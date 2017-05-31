@@ -26,6 +26,9 @@ Each method returns a JSON object - see [http://strava.github.io/api/v3/activiti
 
 ```ruby
 
+# create a manually entered activity (require write permissions)
+@client.create_an_activity({ name: 'Manual Created Activity', type: 'run', start_date_local: '2016-10-02T09:05:05Z', elapsed_time: 600 })
+
 @client.retrieve_an_activity(:activity_id)
 
 @client.update_an_activity(:activity_id, {}) # update an activity (require write permissions)

@@ -4,6 +4,19 @@ module Strava::Api::V3
   module Activity
     include Common
 
+    # Create a manually entered activity
+    #
+    # See {https://strava.github.io/api/v3/activities/#create} for full details
+    #
+    # @param args any additional arguments
+    # @param options (see #get_object)
+    # @param block post processing code block
+    #
+    # @return a 201 status code along with a detailed representation of the created activity
+    def create_an_activity(args = {}, options = {}, &block)
+      api_call('activities', args, 'post', options, &block)
+    end
+
     # Fetch information about a specific activity
     #
     # See {https://strava.github.io/api/v3/activities/#get-details} for full details
