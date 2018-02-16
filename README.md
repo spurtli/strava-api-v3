@@ -1,6 +1,7 @@
 # strava-api-v3
 
-[![Build Status](https://secure.travis-ci.org/jaredholdcroft/strava-api-v3.png)](http://travis-ci.org/jaredholdcroft/strava-api-v3) [![Code Climate](https://codeclimate.com/github/jaredholdcroft/strava-api-v3.png)](https://codeclimate.com/github/jaredholdcroft/strava-api-v3)
+[![Build Status](https://travis-ci.org/jaredholdcroft/strava-api-v3.svg?branch=master)](https://travis-ci.org/jaredholdcroft/strava-api-v3)
+[![Maintainability](https://api.codeclimate.com/v1/badges/8ee75b7f62d2c2962b1b/maintainability)](https://codeclimate.com/github/jaredholdcroft/strava-api-v3/maintainability)
 
 This gem provides a wrapper around the Strava API V3 - [http://strava.github.io/api/](http://strava.github.io/api/)
 
