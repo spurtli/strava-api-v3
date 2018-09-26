@@ -1,9 +1,11 @@
 language: ruby
-before_install:
-  - gem install bundler -v 1.9.10
+
+cache: bundler
+
 rvm:
   - 2.0.0
-  - 1.9.3
+  - 2.4.1
+
 deploy:
     provider: rubygems
     api_key: "b420f166bc4a56c9036e41cbe427af7b"
